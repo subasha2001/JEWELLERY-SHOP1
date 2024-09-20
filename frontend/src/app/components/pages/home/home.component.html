@@ -1,0 +1,29 @@
+<div class="space-top"></div>
+<div class="space-top"></div>
+<div class="flex mx-w mx-auto">
+    <ul class="flex justify-center items-center mx-w mx-auto">
+        <li *ngFor="let data of products">
+            <a routerLink='/product/{{data.id}}'
+                class="relative px-5 md:w-60 w-52 shadow hover:shadow-xl flex justify-center flex-col">
+                <img class="w-8/12 z-10 default_img absolute top-6 left-10" 
+                    src="/assets/images/{{data.imageDis}}"
+                    [alt]="data.name" />
+                <img class="w-8/12 z-10 hover_img absolute top-6 left-10" 
+                    src="/assets/images/{{data.imageHov}}"
+                    [alt]="data.name" />
+                <div class="content absolute top-16">
+                    <div class="text-base font-medium py-2 h-16 flex items-center">{{data.name}}</div>
+                    <hr>
+                    <div class="font-light py-1">Weight: {{data.weight}} gms</div>
+                    <hr>
+                    <div class="mr-auto absolute mt-1" *ngIf="data.metalType?.includes('gold')">
+                        <span>Price: {{data.weight * todaysGoldRate | currency:"&#8377; "}}</span>
+                    </div>
+                    <div class="mr-auto absolute mt-1" *ngIf="data.metalType?.includes('silver')">
+                        <span>Price: {{data.weight * todaysSilverRate | currency:"&#8377; "}}</span>
+                    </div>
+                </div>
+            </a>
+        </li>
+    </ul>
+</div>

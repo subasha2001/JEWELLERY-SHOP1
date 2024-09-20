@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+.mx-w{
+    max-width: 1280px;
+}
+.m-auto{
+    margin: 0 auto;
+}
+.space-top{
+    height: 110px;
+}

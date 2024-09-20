@@ -1,0 +1,64 @@
+import { Component, OnInit } from '@angular/core';
+import { ProductsService } from '../../../services/products.service';
+import { jewelleryType } from '../../../shared/models/productType';
+import { ActivatedRoute, RouterLink } from '@angular/router';
+import { Observable } from 'rxjs';
+import { CommonModule } from '@angular/common';
+import { SearchComponent } from "../../partials/search/search.component";
+import { ImageSliderComponent } from "../../partials/banner/banner.component";
+import { bannerType } from '../../../shared/models/bannerType';
+
+
+@Component({
+  selector: 'app-home-page',
+  standalone: true,
+  imports: [CommonModule, RouterLink, SearchComponent, ImageSliderComponent],
+  templateUrl: './home-page.component.html',
+  styleUrl: './home-page.component.css'
+})
+export class HomePageComponent {
+
+  products: jewelleryType[] = [];
+  bannerImages:bannerType[] = [];
+  todaysGoldRate!:number;
+  todaysSilverRate!:number;
+
+  constructor(private service: ProductsService, private actRoute: ActivatedRoute) {
+    actRoute.params.subscribe((params) => {
+      let productsObservable: Observable<jewelleryType[]>;
+      if (params.searchTerm) {
+        productsObservable = this.service.getProductsBySearchTerm(params.searchTerm);
+      }else if(params.metalTypeName){
+        productsObservable = this.service.getProductsByMetalType(params.metalTypeName);
+      }else if(params.categoryName){
+        productsObservable = this.service.getProductsByCategory(params.categoryName);
+      } else {
+        productsObservable = this.service.getAllProducts();
+      }
+
+      productsObservable.subscribe((Products) => {
+        this.products = Products;
+      })
+
+      if(typeof localStorage!== 'undefined'){
+        const goldrate = localStorage.getItem('goldRate');
+        const silverrate = localStorage.getItem('silverRate');
+  
+        if(goldrate){
+          this.todaysGoldRate = JSON.parse(goldrate);
+        }
+
+        if(silverrate){
+          this.todaysSilverRate = JSON.parse(silverrate);
+        }
+      }
+    })
+
+    actRoute.params.subscribe((params)=>{
+      let bannerObservable:Observable<bannerType[]> = this.service.getBannerItems();
+      bannerObservable.subscribe((Items=>{
+        this.bannerImages = Items;
+      }))
+    })
+  }
+}

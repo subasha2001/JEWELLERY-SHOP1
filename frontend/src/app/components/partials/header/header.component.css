@@ -1,0 +1,24 @@
+a:hover{
+    background-color: #b91c1c;
+    color: yellow;
+}
+.contact:hover{background-color: transparent;}
+.gold-items div{display: none;width: 150px;}
+.gold-items:hover .items{
+    display: flex;
+}
+.items a{
+    padding: 5px 10px;
+}
+.items a:hover{
+    background-color: #b91c1c;
+    color: yellow;
+}
+.header-1 a{
+    padding: 8px;
+}
+.header{
+    position: fixed;
+    z-index: 100;
+    width: 100%;
+}

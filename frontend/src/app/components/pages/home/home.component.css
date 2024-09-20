@@ -1,0 +1,34 @@
+ul{flex-wrap: wrap;}
+li a{
+    height: 20rem;
+    border-radius: 1rem;
+    margin: 0.5rem;
+}
+li a:hover{
+    opacity: 0.9;
+    cursor: pointer;    
+}
+li a img{
+    object-fit: cover;
+}
+.content{
+    position: relative;
+    margin-top: 0.3rem;
+}
+img.hover_img{
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(0);
+}
+li a:hover img.hover_img{
+    visibility: visible;
+    opacity: 1;
+    z-index: 10;
+    transform: translateY(0%);
+    transition: all 0.3s linear;
+}
+li a:hover img.default_img{
+    visibility: hidden;
+    opacity: 0;
+    z-index: -1;
+}

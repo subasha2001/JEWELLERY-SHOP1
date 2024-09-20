@@ -1,0 +1,80 @@
+<div class="space-top"></div>
+<div class="mx-w mx-auto flex justify-around flex-wrap">
+    <div class="mt-9 w-2/5">
+        <h2 class="text-center my-3">ADD PRODUCT</h2>
+        <form #addProduct="ngForm" (ngSubmit)="add(addProduct.value)" class="flex flex-col items-center">
+            <input type="text" placeholder="Enter Product Name" name="name" ngModel>
+            <input type="text" placeholder="Enter Display image with extension" name="imageDis" ngModel>
+            <input type="text" placeholder="Enter Hover image with extension" name="imageHov" ngModel>
+            <input type="text" placeholder="Product Description" name="description" ngModel>
+            <input type="text" placeholder="Enter Metal Type" name="metalType" ngModel>
+            <input type="text" placeholder="Enter Product Category" name="category" ngModel>
+            <input type="number" placeholder="Enter Product Weight in grams" name="weight" ngModel>
+            <input type="number" placeholder="Making Cost in %" name="makingCost" ngModel>
+            <input type="number" placeholder="Wastage in %" name="wastage" ngModel>
+            <button class="bg-red-700 px-5 py-3 text-white rounded w-full bo-ra5 cupo">Add Product</button>
+        </form>
+    </div>
+
+    <div class="mt-9 w-1/6 flex flex-col justify-around">
+        <form class="flex flex-col items-center">
+            <label for="">Today's Gold Rate</label>
+            <input #todaysGoldRate type="number" placeholder="Enter Today's Gold rate in rupees" name="GoldRate"
+                ngModel>
+            <input #todaysSilverRate type="number" placeholder="Enter Today's Silver rate in rupees" name="SilverRate"
+                ngModel>
+            <button (click)="updateGoldRate(todaysGoldRate.value, todaysSilverRate.value)"
+                class="bg-red-700 px-5 py-3 text-white rounded w-full bo-ra5 cupo">UPDATE GOLDRATE</button>
+        </form>
+        <!-- <form class="flex flex-col items-center">
+            <label for="">Today's Silver Rate</label>
+            <input #todaysSilverRate type="number" placeholder="Enter Today's Silver rate in rupees" name="SilverRate" ngModel>
+            <button (click)="updateSilverRate(todaysSilverRate.value)" class="bg-green-400 px-5 py-3 text-white rounded w-full bo-ra5 cupo">UPDATE GOLDRATE</button>
+        </form> -->
+        <form #banner="ngForm" (ngSubmit)="addBanner(banner.value)" class="flex flex-col items-center">
+            <label for="">Add banner image url</label>
+            <input type="text" placeholder="Banner image url with extension" name="image" ngModel>
+            <button class="bg-red-700 px-5 py-3 text-white rounded w-full bo-ra5 cupo">ADD BANNER</button>
+        </form>
+    </div>
+
+    <!-- <div class="mt-9 w-2/5">
+        <h2 class="text-center my-3">UPDATE PRODUCT</h2>
+        <form #addProduct="ngForm" (ngSubmit)="add(addProduct.value)" class="flex flex-col items-center">
+            <input type="text" placeholder="Enter Product Name" name="name" ngModel>
+            <input type="text" placeholder="Product image with extension" name="image" ngModel>
+            <input type="text" placeholder="Product Description" name="description" ngModel>
+            <input type="text" placeholder="Enter Metal Type" name="metalType" ngModel>
+            <input type="text" placeholder="Enter Product Category" name="category" ngModel>
+            <input type="number" placeholder="Enter Product Weight in grams" name="weight" ngModel>
+            <input type="number" placeholder="Making Cost in %" name="makingCost" ngModel>
+            <input type="number" placeholder="Wastage in %" name="wastage" ngModel>
+            <button class="bg-red-700 px-5 py-3 text-white rounded w-full bo-ra5 cupo">Add Product</button>
+        </form>
+    </div> -->
+</div>
+
+<div class="space-top"></div>
+<table class="mx-w mx-auto w-3/4">
+    <tbody>
+        <tr class="bg-red-700 text-white">
+            <th>Image</th>
+            <th>Name</th>
+            <th>Weight</th>
+            <th>Action</th>
+        </tr>
+        <tr *ngFor="let data of products" class="text-center border-b-2">
+            <td class=""><img class="mx-auto w-20 h-20 object-cover rounded-full" src="assets/images/{{data.imageDis}}" [alt]="data.name"></td>
+            <td class=""><a routerLink="/products/{{data.id}}" routerLinkActive="active">{{data.name}}</a></td>
+            <td class="">{{data.weight}} gms</td>
+            <td class="mt-5">
+                <button class="cupo remove-button mr-5" (click)="deleteProduct(data.id)">
+                    <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
+                </button>
+                <button class="cupo remove-button" (click)="deleteProduct(data.id)">
+                    <i class="fa fa-trash fa-2x" aria-hidden="true"></i>
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
