@@ -1,0 +1,26 @@
+<!-- <div class="slider mx-w mx-auto shadow" style="
+    --width: 105px;
+    --height: 115px;
+    --quantity: 11;
+">
+    <div class="list">
+        <div class="item" style="--position: {{data.count}}" *ngFor="let data of porto">
+            <img src="assets/images/porto/{{data.img}}.png" alt="">
+            <h3 class="text">{{data.name}}</h3>
+        </div>
+    </div>
+</div> -->
+<div class="product mx-w mx-auto">
+    <div class="slider-wrap">
+        <div class="slider-main">
+            <div class="item" *ngFor="let data of porto">
+                <img src="assets/images/porto/{{data.img}}.png" alt="">
+                <h3 class="text">{{data.name}}</h3>
+            </div>
+        </div>
+        <!-- <div class="button absolute">
+            <button type="button" appPrev class="prev border px-2">Prev</button>
+            <button type="button" appnext class="next border px-2">Next</button>
+        </div> -->
+    </div>
+</div>

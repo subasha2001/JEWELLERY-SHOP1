@@ -1,15 +1,12 @@
 <div class="header border-b-2 bg-gray-100">
     <div class="header1 flex justify-between px-10 mx-w m-auto items-center">
-        <div class="logo"><a class="px-2 py-2" [routerLink]="['/']">Jewellers!</a></div>
-        <div class="text-xs">
-            <p>GoldRate: {{goldRate | currency:'&#8377; '}}</p>
-            <p>SilverRate: {{silverRate | currency:'&#8377; '}}</p>
-        </div>
-        <div>
-
+        <div class="logo flex items-center">
+            <a class="px-2 py-2 logo flex items-center" [routerLink]="['/']">
+                <img src="assets/images/goldPalaceLogo2.png" />
+            </a>
         </div>
         <app-search></app-search>
-        <div class="flex items-center ">
+        <div class="flex items-center justify-between">
             <div class="mr-3 items-center border-b-2 hidden md:flex">
                 <a class="contact" [routerLink]="['/contact']">
                     <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30" viewBox="0 0 48 48">
@@ -23,31 +20,185 @@
                 </a>
                 <span>+91 1234567890</span>
             </div>
-            <ul class="flex gap-3">
+            <ul class="flex gap-3 admin">
                 <li><a class="px-2 py-2" [routerLink]="['/admin']">Admin</a></li>
-                <li><a class="px-2 py-2" [routerLink]="['/login']">Login</a></li>
+                <li *ngIf="!isAuth"><a class="px-2 py-2" [routerLink]="['/login']">Login</a></li>
+                <li *ngIf="isAuth" class="relative user">
+                    <a class="px-2 py-2" [routerLink]="['/login']">{{user.name}}</a>
+                    <div class="logout absolute hidden shadow-xl">
+                        <a class="px-2 py-2" href="" (click)="logout()">Logout</a>
+                    </div>
+                </li>
             </ul>
-            <a class="px-2 py-2" routerLink="/admin" class="cart w-9">
-                <img src="assets/images/cart-bag.svg" alt="">
-            </a>
         </div>
+        <div class="text-xs hidden md:block">
+            <p>GOLD RARE: {{goldRate | currency:'&#8377; '}}</p>
+            <p>SILVER RATE: {{silverRate | currency:'&#8377; '}}</p>
+        </div>
+        <a class="rates block relative md:hidden" href="">
+            <i class="fa fa-chevron-down" aria-hidden="true"></i>
+            <div class="text-xs hidden absolute">
+                <p>GOLD RARE: {{goldRate | currency:'&#8377; '}}</p>
+                <p>SILVER RATE: {{silverRate | currency:'&#8377; '}}</p>
+            </div>
+        </a>
+        <a class="px-2 py-2" routerLink="/cart" class="cart w-9 relative">
+            <!-- <img src="assets/images/cart-bag.svg" alt="">Cart -->
+            <i class="fa fa-shopping-bag fa-3x" aria-hidden="true"></i>
+            <div class="absolute top-4 left-5">{{cartQuantity}}</div>
+        </a>
     </div>
     <div class="bg-red-700 h-10 flex items-center">
         <div class="categories mx-w mx-auto text-white">
             <ul class="flex justify-start items-center">
                 <li><a class="mr-3 p-2" [routerLink]="['/']">Home</a></li>
-                <li *ngFor="let data of metalType">
-                    <a class="mr-3 p-2" routerLink="/metalType/{{data.name}}">{{data.name | uppercase}}</a>
-                </li>
-                <li class="gold-items relative">
-                    <a class="mr-3 p-2" [routerLink]="['/']">Categories</a>
-                    <div class="items absolute z-10 top-8 left-0 flex-col bg-white text-black shadow-xl">
-                        <a class="border-b-2" *ngFor="let data of categories" routerLink="/category/{{data.name}}">{{data.name | uppercase}} ({{data.count}})</a>
+                <li *ngFor="let metal of metalType" class="relative gold-silver">
+                    <a class="mr-3 p-2" routerLink="/metalType/{{metal.name}}">{{metal.name | uppercase}}</a>
+                    <div class="absolute gold flex-wrap w-9/12 z-10 top-8 left-0 bg-white text-black shadow-xl" *ngIf="metal.name.includes('gold')">
+                        <a routerLink="/category/gold/earing">
+                            <div  class="flex-col">
+                                <img src="assets/images/gold/simpleGoldEaring-1-d.jpg" alt="">
+                                <h3 class="text-center">Gold Earing</h3>
+                            </div>
+                        </a>
+                        <a routerLink="/category/gold/ring">
+                            <div  class="flex-col">
+                                <img src="assets/images/gold/elegantFlowerRing-1-d.jpg" alt="">
+                                <h3 class="text-center">Gold Ring</h3>
+                            </div>
+                        </a>
+                        <a routerLink="/category/gold/bracelet">
+                            <div  class="flex-col">
+                                <img src="assets/images/gold/mensGoldBracelet-1-d.jpg" alt="">
+                                <h3 class="text-center">Gold Bracelet</h3>
+                            </div>
+                        </a>
+                        <a routerLink="/category/gold/bangles">
+                            <div  class="flex-col">
+                                <img src="assets/images/gold/goldBangle-1-d.jpg" alt="">
+                                <h3 class="text-center">Gold Bangles</h3>
+                            </div>
+                        </a>
+                        <a routerLink="/category/gold/chain">
+                            <div  class="flex-col">
+                                <img src="assets/images/gold/stunningGoldChain-1-d.jpg" alt="">
+                                <h3 class="text-center">Gold Chain</h3>
+                            </div>
+                        </a>
+                        <a routerLink="/category/gold/necklace">
+                            <div  class="flex-col">
+                                <img src="assets/images/gold/peacockNecklace-1-d.jpg" alt="">
+                                <h3 class="text-center">Gold Necklace</h3>
+                            </div>
+                        </a>
+                        <a routerLink="/category/gold/pendant">
+                            <div  class="flex-col">
+                                <img src="assets/images/gold/motherChiltHeartPendant-d.jpg" alt="">
+                                <h3 class="text-center">Gold Pendant</h3>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="absolute silver flex-wrap z-10 top-8 left-0 bg-white text-black shadow-xl" *ngIf="metal.name.includes('silver')">
+                        <a routerLink="/category/silver/earing">
+                            <div  class="flex-col">
+                                <img src="assets/images/silver/silverEaring-1-d.jpg" alt="">
+                                <h3 class="text-center">Silver Earing</h3>
+                            </div>
+                        </a>
+                        <a routerLink="/category/silver/ring">
+                            <div  class="flex-col">
+                                <img src="assets/images/silver/silverRing-1-d.webp" alt="">
+                                <h3 class="text-center">Silver Ring</h3>
+                            </div>
+                        </a>
+                        <a routerLink="/category/silver/bangle">
+                            <div  class="flex-col">
+                                <img src="assets/images/silver/silverBangle-1-d.jpg" alt="">
+                                <h3 class="text-center">Silver Bangles</h3>
+                            </div>
+                        </a>
+                        <a routerLink="/category/silver/chain">
+                            <div  class="flex-col">
+                                <img src="assets/images/silver/sachinSilverChain-1-d.jpg" alt="">
+                                <h3 class="text-center">Silver Chain</h3>
+                            </div>
+                        </a>
+                        <a routerLink="/category/silver/pendant">
+                            <div  class="flex-col">
+                                <img src="assets/images/silver/silverPendant-1-d.jpg" alt="">
+                                <h3 class="text-center">Silver Pendant</h3>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="absolute silver flex-wrap z-10 top-8 left-0 bg-white text-black shadow-xl" *ngIf="metal.name.includes('diamond')">
+                        <a routerLink="/category/diamond/earing">
+                            <div  class="flex-col">
+                                <img src="assets/images/diamond/diamondNecklace-1-d.jpg" alt="">
+                                <h3 class="text-center">Diamond Necklace</h3>
+                            </div>
+                        </a>
+                        <a routerLink="/category/diamond/ring">
+                            <div  class="flex-col">
+                                <img src="assets/images/diamond/diamondPendant-1-d.jpg" alt="">
+                                <h3 class="text-center">Diamond Ring</h3>
+                            </div>
+                        </a>
+                        <a routerLink="/category/diamond/bangle">
+                            <div  class="flex-col">
+                                <img src="assets/images/diamond/diamondBangle-1-d.jpg" alt="">
+                                <h3 class="text-center">Diamond Bangles</h3>
+                            </div>
+                        </a>
+                        <a routerLink="/category/diamond/chain">
+                            <div  class="flex-col">
+                                <img src="assets/images/diamond/diamondPendant-1-d.jpg" alt="">
+                                <h3 class="text-center">Diamond Chain</h3>
+                            </div>
+                        </a>
+                        <a routerLink="/category/diamond/pendant">
+                            <div  class="flex-col">
+                                <img src="assets/images/diamond/diamondPendant-1-d.jpg" alt="">
+                                <h3 class="text-center">Diamond Pendant</h3>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="absolute silver flex-wrap z-10 top-8 left-0 bg-white text-black shadow-xl" *ngIf="metal.name.includes('coin')">
+                        <a routerLink="/category/coin/coin">
+                            <div  class="flex-col">
+                                <img src="assets/images/coin/goldCoin-1-d.jpg" alt="">
+                                <h3 class="text-center">Coin</h3>
+                            </div>
+                        </a>
+                        <a routerLink="/category/coin/coin">
+                            <div  class="flex-col">
+                                <img src="assets/images/coin/goldCoin-2-d.jpg" alt="">
+                                <h3 class="text-center">Coin</h3>
+                            </div>
+                        </a>
+                        <a routerLink="/category/coin/coin">
+                            <div  class="flex-col">
+                                <img src="assets/images/coin/goldCoin-2-d.jpg" alt="">
+                                <h3 class="text-center">Coin</h3>
+                            </div>
+                        </a>
+                        <a routerLink="/category/coin/coin">
+                            <div  class="flex-col">
+                                <img src="assets/images/coin/goldCoin-2-d.jpg" alt="">
+                                <h3 class="text-center">Coin</h3>
+                            </div>
+                        </a>
                     </div>
                 </li>
+                <li class="gold-items relative">
+                    <a class="mr-3 p-2" [routerLink]="['/category/All']">Categories</a>
+                    <div class="items absolute z-10 top-8 left-0 flex-col bg-white text-black shadow-xl">
+                        <a *ngFor="let data of categories"
+                            routerLink="/category/{{data.name}}">{{data.name | uppercase}} ({{data.count}})</a>
+                    </div>
+                </li>
+                <li><a class="mr-3 p-2" [routerLink]="['/schemes']">Schemes</a></li>
                 <li><a class="mr-3 p-2" [routerLink]="['/contact']">Contact Us</a></li>
             </ul>
         </div>
     </div>
 </div>
-<!-- subash -->

@@ -7,12 +7,16 @@ import { CommonModule } from '@angular/common';
 import { SearchComponent } from "../../partials/search/search.component";
 import { ImageSliderComponent } from "../../partials/banner/banner.component";
 import { bannerType } from '../../../shared/models/bannerType';
+import { PortoSliderComponent } from "../../partials/porto-slider/porto-slider.component";
+import { CategoriesComponent } from "../../partials/categories/categories.component";
+import { PageNotFoundComponent } from "../../partials/page-not-found/page-not-found.component";
+import { TitleComponent } from "../../partials/title/title.component";
 
 
 @Component({
   selector: 'app-home-page',
   standalone: true,
-  imports: [CommonModule, RouterLink, SearchComponent, ImageSliderComponent],
+  imports: [CommonModule, RouterLink, SearchComponent, ImageSliderComponent, PortoSliderComponent, CategoriesComponent, PageNotFoundComponent, TitleComponent],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.css'
 })
@@ -20,8 +24,12 @@ export class HomePageComponent {
 
   products: jewelleryType[] = [];
   bannerImages:bannerType[] = [];
-  todaysGoldRate!:number;
-  todaysSilverRate!:number;
+  GR!:number;
+  SR!:number;
+  goldMC!:number;
+  silverMC!:number;
+  diamondMC!:number;
+  date!:Date;
 
   constructor(private service: ProductsService, private actRoute: ActivatedRoute) {
     actRoute.params.subscribe((params) => {
@@ -45,11 +53,11 @@ export class HomePageComponent {
         const silverrate = localStorage.getItem('silverRate');
   
         if(goldrate){
-          this.todaysGoldRate = JSON.parse(goldrate);
+          this.GR = JSON.parse(goldrate);
         }
 
         if(silverrate){
-          this.todaysSilverRate = JSON.parse(silverrate);
+          this.SR = JSON.parse(silverrate);
         }
       }
     })
@@ -62,3 +70,11 @@ export class HomePageComponent {
     })
   }
 }
+
+
+
+
+
+//images adding
+//payment
+//

@@ -1,0 +1,80 @@
+/* .slider{
+    width: 100%;
+    height: var(--height);
+    overflow: hidden;
+}
+.slider .list{
+    display: flex;
+    width: 100%;
+    min-width: calc(var(--width)*var(--quantity));
+    position: relative;
+}
+.slider .list .item{
+    width: var(--width);
+    height: var(--height);
+    position: absolute;
+    left: 100%;
+    animation: autorun 10s linear infinite;
+    animation-delay: calc((10s/var(--quantity))*(var(--position) - 1));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+@keyframes autorun {
+    from{left: 100%;}
+    to{left: calc(var(--width) * -1);}
+}
+.slider .list .item img{
+    width: 80%;
+}
+.slider:hover .item{
+    animation-play-state: paused !important;
+}
+.text{
+    font-size: 12px;
+    text-align: center;
+}
+@media screen and (max-width:550px) {
+    .slider{
+        max-width: 450px;
+    }
+} */
+
+/*  */
+.product{
+    padding: 0px 70px;
+}
+.slider-wrap{
+    position: relative;
+    overflow: hidden;
+    height: 105px;
+}
+.slider-main{
+    position: absolute;
+    width: 150%;
+    display: flex;
+}
+.item{
+    display: flex;
+    width: 145px;
+    height: 112px;
+    flex-direction: column;
+    align-items: center;
+}
+.item img{
+    width: 80px;
+}
+.prev{
+    position: absolute;
+    top: 40px;
+    left: 15px;
+    transform: translate(-50%, -50%);
+}
+.next{
+    position: absolute;
+    top: 60px;
+    right: -50px;
+    transform: translate(-50%, -50%);
+}

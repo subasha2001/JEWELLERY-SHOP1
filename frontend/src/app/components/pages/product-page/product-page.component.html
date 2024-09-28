@@ -5,11 +5,15 @@
 </app-page-not-found> -->
 <div class="space-top"></div>
 <div *ngIf="product" class="max-w-5xl mt-10 flex flex-col mx-auto justify-between items-center md:flex-row">
-    <div class="md:w-1/2 m-3 flex justify-center shadow-md flex-col items-center">
-        <img class="w-10/12 p-2" src="/assets/images/{{product.imageDis}}" [alt]="product.name">
+    <div class="md:w-1/2 m-3 flex justify-center shadow-md flex-col items-center relative">
+        <a (click)="close(true)" class="flex justify-center"><img class="w-10/12 p-2" src="/assets/images/{{product.metalType}}/{{ImgDisHov || product.imageDis}}" [alt]="product.name"></a>
+        <div [ngClass]="{'active': closeClass}" class="modal" id="modal">
+            <span class="close" (click)="close(false)">&times;</span>
+            <img class="modal-img" src="/assets/images/{{product.metalType}}/{{ImgDisHov || product.imageDis}}" alt="">
+        </div>
         <div class="flex border-t-2">
-            <img class="w-1/4 p-2" src="/assets/images/{{product.imageDis}}" [alt]="product.name">
-            <img class="w-1/4 p-2" src="/assets/images/{{product.imageHov}}" [alt]="product.name">
+            <a class="w-1/4 p-2" (click)="showImg(product.imageDis)"><img class="" src="/assets/images/{{product.metalType}}/{{product.imageDis}}" [alt]="product.name"></a>
+            <a class="w-1/4 p-2" (click)="showImg(product.imageHov)"><img class="" src="/assets/images/{{product.metalType}}/{{product.imageHov}}" [alt]="product.name"></a>
         </div>
     </div>
 
@@ -24,26 +28,36 @@
         </div>
         <div class="price my-2 mx-1">
             <span *ngIf="product.metalType?.includes('gold')">
-                {{goldRate*product.weight | currency:"&#8377; "}}
+                {{GR*product.weight | currency:"&#8377; "}}
             </span>
             <span *ngIf="product.metalType?.includes('silver')">
-                {{silverRate*product.weight | currency:"&#8377; "}}
+                {{SR*product.weight | currency:"&#8377; "}}
+            </span>
+            <span *ngIf="product.metalType?.includes('diamond')">
+                {{GR*product.weight + GR*product.makingCost + GR*product.wastage | currency:"&#8377; "}}
             </span>
         </div>
         <div class="border border-gray-700 rounded-lg p-1">
             <h3 class="font-medium">PRICE BREAKUP</h3>
             <div class="font-medium">
-                <div class="flex gap-3 items-center" *ngIf="product.metalType?.includes('gold')">
-                    <span>22KT GOLD<br> {{goldRate * product.weight | currency:"&#8377; "}} </span><div>+</div>
-                    <span>MC<br> {{goldMakingCost | currency:"&#8377; "}} </span><div>+</div>
-                    <span>Wastage<br> {{product.wastage*goldRate | currency:"&#8377; "}}</span>
-                    <span></span>
+                <div class="flex gap-3 items-center price-break" *ngIf="product.metalType?.includes('gold')">
+                    <span>22KT GOLD<br> {{GR * product.weight | currency:"&#8377; "}} </span><div>+</div>
+                    <span>MC<br> {{GR*product.makingCost/100*product.weight | currency:"&#8377; "}} </span><div>+</div>
+                    <span>Wastage<br> {{product.wastage/100*GR | currency:"&#8377; "}}</span><div>+</div>
+                    <span>GST(3.00%)<br> {{gst*GR}}</span>
                 </div>
-                <div class="flex gap-3 items-center" *ngIf="product.metalType?.includes('silver')">
-                    <span>22KT GOLD<br> {{silverRate * product.weight | currency:"&#8377; "}} </span><div>+</div>
-                    <span>MC<br> {{silverMakingCost | currency:"&#8377; "}} </span><div>+</div>
-                    <span>Wastage<br> {{product.wastage*silverRate | currency:"&#8377; "}}</span>
-                    <span></span>
+                <div class="flex gap-3 items-center price-break" *ngIf="product.metalType?.includes('silver')">
+                    <span>22KT GOLD<br> {{SR * product.weight | currency:"&#8377; "}} </span><div>+</div>
+                    <span>MC<br> {{SR*product.makingCost/100*product.weight | currency:"&#8377; "}} </span><div>+</div>
+                    <span>Wastage<br> {{product.wastage/100*SR | currency:"&#8377; "}}</span><div>+</div>
+                    <span>GST(3.00%)<br> {{gst*GR | currency:"&#8377; "}}</span>
+                </div>
+                <div class="flex gap-3 items-center price-break" *ngIf="product.metalType?.includes('diamond')">
+                    <span>22KT GOLD<br> {{GR * product.weight | currency:"&#8377; "}} </span><div>+</div>
+                    <span>MC<br> {{GR*product.makingCost/100*product.weight | currency:"&#8377; "}} </span><div>+</div>
+                    <span>SC<br> {{product.stoneCarat*GR*product.weight | currency:"&#8377; "}}</span><div>+</div>
+                    <!-- <span>Wastage<br> {{product.wastage/100*GR | currency:"&#8377; "}}</span><div>+</div> -->
+                    <span>GST(3.00%)<br> {{gst*GR | currency:"&#8377; "}}</span>
                 </div>
             </div>
         </div>
@@ -53,8 +67,8 @@
             </span>
         </div>
         <hr class="w-full my-2 mt-4">
-        <button (click)="buyNow()" class="cupo my-2 w-1/4 bg-red-700 p-2 text-white opacity-80 hover:opacity-100">
-            Buy Now
+        <button (click)="addToCart()" class="cupo my-2 w-1/4 bg-red-700 p-2 text-white opacity-80 hover:opacity-100">
+            Add to Cart
         </button>
         <hr class="w-full my-2">
     </div>

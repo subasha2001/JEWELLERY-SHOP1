@@ -14,6 +14,29 @@ a:hover{
     background-color: #b91c1c;
     color: yellow;
 }
+.gold-silver div{
+    display: none;
+    width: 720px;
+}
+.gold-silver:hover a div{
+    width: 150px;
+}
+.gold-silver:hover div{
+    display: flex;
+    left: -400px;
+    padding: 20px;
+}
+.gold-silver div a{
+    padding: 5px 10px;
+}
+.gold-silver div a:hover{
+    background-color: transparent;
+    color: black;
+}
+.gold-silver div img:hover{
+    transform: translateY(-20px);
+    transition: all 0.12s linear;
+}
 .header-1 a{
     padding: 8px;
 }
@@ -21,4 +44,48 @@ a:hover{
     position: fixed;
     z-index: 100;
     width: 100%;
+}
+.logo{
+    width: 100px;
+    height: 100px;
+}
+.admin .user:hover .logout{
+    display: block;
+    top: 30px;
+    left: 0px;
+    background-color: white;
+    color: black;
+    padding: 5px 0;
+}
+.rates i{
+    padding: 5px;
+}
+.rates:hover div{
+    display: block;
+    left: -80px;
+    top: 30px;
+    width: 175px;
+    background-color: white;
+    padding: 10px;
+    color: black;
+    font-size: 15px;
+    line-height: 25px;
+}
+.cart{color: white;}
+.cart:hover{background-color: transparent;color: white;}
+.cart i{
+    color: #b91c1c;
+}
+
+@media screen and (max-width:550px) {
+    .gold-silver div{
+        width: 400px;
+        left: -60px !important;
+    }
+    .gold-silver .silver{
+        left: -129px !important;
+    }
+    .gold-silver a div{
+        width: 100px !important;
+    }
 }

@@ -10,7 +10,9 @@ export interface Jewellery{
     category:string[];
     weight:number;
     makingCost:number;
+    stoneCarat:number;
     wastage:number;
+    featured:string;
 }
 
 export const ProductSchema = new Schema<Jewellery>(
@@ -19,11 +21,13 @@ export const ProductSchema = new Schema<Jewellery>(
         imageDis:{type:String, required:true},
         imageHov:{type:String, required:true},
         description:{type:String},
-        metalType:{type:[String]},
-        category:{type:[String]},
+        metalType:{type:[String], required:true},
+        category:{type:[String], required:true},
         weight:{type:Number, required:true},
         makingCost:{type:Number, required:true},
-        wastage:{type:Number, required:true}
+        stoneCarat:{type:Number},
+        wastage:{type:Number},
+        featured:{type:String}
     },{
         toJSON:{
             virtuals:true

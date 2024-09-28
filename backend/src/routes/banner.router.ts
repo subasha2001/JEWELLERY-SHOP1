@@ -16,6 +16,10 @@ router.get("/seed", asyncHandler(
         res.send("Seed is Done!");
     }))
 
+router.delete('/deleteBanner/:productId', (req, res) => {
+    BannerModel.deleteOne({ _id: req.params.productId }).then(result => { });
+    res.status(200).json({ message: 'Banner deleted!' });
+})
 
 
 router.get("/", asyncHandler(

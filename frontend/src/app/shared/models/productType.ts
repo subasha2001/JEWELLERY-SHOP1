@@ -8,6 +8,9 @@ export class jewelleryType{
     category?:string[];
     weight!:number;
     makingCost!:number;
+    stoneCarat!:number;
     wastage!:number;
+    featured!:string;
     price!:number;
+    updatedAt!:any;
 }

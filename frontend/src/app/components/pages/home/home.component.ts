@@ -7,20 +7,21 @@ import { CommonModule } from '@angular/common';
 import { SearchComponent } from "../../partials/search/search.component";
 import { ImageSliderComponent } from "../../partials/banner/banner.component";
 import { bannerType } from '../../../shared/models/bannerType';
+import { PageNotFoundComponent } from "../../partials/page-not-found/page-not-found.component";
 
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, RouterLink, SearchComponent, ImageSliderComponent],
+  imports: [CommonModule, RouterLink, SearchComponent, ImageSliderComponent, PageNotFoundComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
 
   products: jewelleryType[] = [];
-  todaysGoldRate!:number;
-  todaysSilverRate!:number;
+  GR!:number;
+  SR!:number;
 
   constructor(private service: ProductsService, private actRoute: ActivatedRoute) {
     actRoute.params.subscribe((params) => {
@@ -44,11 +45,11 @@ export class HomeComponent {
         const silverrate = localStorage.getItem('silverRate');
   
         if(goldrate){
-          this.todaysGoldRate = JSON.parse(goldrate);
+          this.GR = JSON.parse(goldrate);
         }
 
         if(silverrate){
-          this.todaysSilverRate = JSON.parse(silverrate);
+          this.SR = JSON.parse(silverrate);
         }
       }
     })

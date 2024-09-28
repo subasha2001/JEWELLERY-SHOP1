@@ -6,6 +6,9 @@ import { SearchComponent } from "../search/search.component";
 import { Category } from '../../../shared/models/categories';
 import { CommonModule } from '@angular/common';
 import { metalType } from '../../../shared/models/metalType';
+import { User } from '../../../shared/models/user';
+import { UserService } from '../../../services/user.service';
+import { CartService } from '../../../services/cart.service';
 
 @Component({
   selector: 'app-header',
@@ -19,9 +22,15 @@ export class HeaderComponent {
   metalType?:metalType[];
   categories?:Category[];
   goldRate!:string | null;
+  user!:User;
   silverRate!:string | null;
+  cartQuantity!:number;
 
-  constructor(service:ProductsService){
+  constructor(service:ProductsService, private userService:UserService, cartservice:CartService){
+    service.getAllProducts().subscribe((Products)=>{
+      this.products = Products;
+    })
+
     service.getAllMetalType().subscribe((serverMetalType)=>{
       this.metalType = serverMetalType;
     })
@@ -41,6 +50,20 @@ export class HeaderComponent {
       if(silverrate){
         this.silverRate = JSON.parse(silverrate);
       }
-    }
+    }    
+
+    this.userService.userObservable.subscribe((newUser)=>{
+      this.user = newUser;
+    })
+
+    cartservice.getCartObservable().subscribe((newCart =>{
+      this.cartQuantity = newCart.totalCount; 
+    }))
+  }
+  logout(){
+    this.userService.logout();
+  }
+  get isAuth(){
+    return this.user.name;
   }
 }

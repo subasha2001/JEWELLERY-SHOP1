@@ -3,7 +3,8 @@ import asyncHandler from 'express-async-handler';
 import { jewelleryType } from "../dataType";
 import { ProductsModel } from "../models/products.model";
 import { jewellers } from "../data";
-import jwt from "jsonwebtoken";
+import multer from "multer"
+import path from "path";
 const router = Router();
 
 router.get("/seed", asyncHandler(
@@ -103,16 +104,21 @@ router.get('/:productId', asyncHandler(
     }
 ));
 
+router.delete('/deleteProduct/:productId', (req, res) => {
+    ProductsModel.deleteOne({_id: req.params.productId}).then(result=>{});
+    res.status(200).json({message:'Product deleted!'});
+});
 
-router.delete('/delete/:productId', (req, res) => {
-    const product = ProductsModel.findByIdAndDelete(req.params.productId);
-    res.send(product);
-}
-)
+router.post('/uploadImages', asyncHandler(
+    async(req,res)=>{
+        const imgDis = req.body.name;
+        res.send(imgDis);
+    }
+));
 
 router.post("/addProduct", asyncHandler(
     async (req, res) => {
-        const { name, imageDis, imageHov, description, category, metalType, weight, makingCost, wastage } = req.body;
+        const { name, imageDis, imageHov, description, category, metalType, weight, makingCost, stoneCarat, wastage, featured } = req.body;
         const product = await ProductsModel.findOne({ name });
         if (product) {
             res.status(404).send('Product already present');
@@ -128,8 +134,10 @@ router.post("/addProduct", asyncHandler(
             metalType: metalType.toLowerCase(),
             category: category.toLowerCase(),
             weight,
-            makingCost,
-            wastage
+            makingCost: makingCost/100,
+            stoneCarat,
+            wastage: wastage/100,
+            featured
         }
         const dbProduct = await ProductsModel.create(newProduct);
         res.send(dbProduct);

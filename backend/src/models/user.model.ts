@@ -6,7 +6,7 @@ export interface User{
     password:string;
     name:string;
     address:string;
-    isAdmin:boolean; //in server we dont save the token
+    isAdmin:boolean;
 }
 
 export const UserSchema = new Schema<User>({

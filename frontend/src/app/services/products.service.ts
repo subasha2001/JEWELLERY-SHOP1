@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { jewelleryType } from '../shared/models/productType';
 import { HttpClient } from '@angular/common/http';
-import { BANNER_URL, DELETE_PRODUCT_BY_ID_URL, PRODUCTS_BY_CATEGORY_URL, PRODUCTS_BY_ID_URL, PRODUCTS_BY_METALTYPE_URL, PRODUCTS_BY_SEARCH_URL, PRODUCTS_CATEGORIES_URL, PRODUCTS_METALTYPES_URL, PRODUCTS_URL } from '../shared/models/constants/urls';
+import { BANNER_URL, DELETE_BANNER_BY_ID_URL, DELETE_PRODUCT_BY_ID_URL, PRODUCTS_BY_CATEGORY_URL, PRODUCTS_BY_ID_URL, PRODUCTS_BY_METALTYPE_URL, PRODUCTS_BY_SEARCH_URL, PRODUCTS_CATEGORIES_URL, PRODUCTS_METALTYPES_URL, PRODUCTS_URL } from '../shared/models/constants/urls';
 import { Category } from '../shared/models/categories';
 import { bannerType } from '../shared/models/bannerType';
 import { metalType } from '../shared/models/metalType';
@@ -26,6 +26,11 @@ export class ProductsService {
         }
       })
     )
+  }
+  public uploadfile(file: File) {
+    let formParams = new FormData();
+    formParams.append('file', file)
+    return this.http.post('http://localhost:3000/api/products/uploadImages', formParams)
   }
 
   addBanner(data:bannerType): Observable<bannerType>{
@@ -85,5 +90,9 @@ export class ProductsService {
 
   deleteProductById(productId:string){
     return this.http.delete(DELETE_PRODUCT_BY_ID_URL + productId);
+  }
+
+  deleteBannerById(productId:string){
+    return this.http.delete(DELETE_BANNER_BY_ID_URL + productId);
   }
 }

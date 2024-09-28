@@ -1,0 +1,23 @@
+hr{border: 1px solid;}
+h2{
+    font-weight: 600;
+    text-align: center;
+}
+img{
+    margin-right: 10px;
+    width: 250px;
+    box-shadow: 10px 10px 12px -20px;
+    opacity: 0.8;
+}
+img:hover{
+    opacity: 1;
+}
+@media screen and (max-width:550px) {
+    .category{
+        max-width: 450px;
+    }
+    .items a img{
+        width: 150px;
+        margin-bottom: 25px;
+    }
+}

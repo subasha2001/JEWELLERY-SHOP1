@@ -1,25 +1,24 @@
 <div class="space-top"></div>
 <div class="mx-w mx-auto w-full">
-    <app-title title="Contact Us" margin="1.5rem 0 1.5rem 2.5rem"></app-title>
-    <div class="flex w-full justify-around">
-        <form action="" class="flex flex-col w-1/4">
+    <app-title class="text-center" fontSize="40px" title="Contact Us" margin="2rem 0 1.5rem 0rem"></app-title>
+    <div class="flex w-full md:justify-around md:flex-row flex-col items-center md:items-start">
+        <form #getHelp="ngForm" (ngSubmit)="get(getHelp.value)" class="flex flex-col w-2/4 md:w-1/4">
             <label for="">Name<span>*</span></label>
             <input type="text" placeholder="Enter Your Name" name="name">
             <label for="">Phone No.<span>*</span></label>
             <input type="text" placeholder="Enter Your Mobile Number" name="number">
             <label for="">Email<span>*</span></label>
             <input type="text" placeholder="Enter Your Email" name="email">
-        </form>
-        <form action="" class="flex flex-col w-1/4">
             <label for="">How can we help you?<span>*</span></label>
             <textarea type="text" placeholder="Write your thoughts" name="description"></textarea>
+            <button class="bg-red-700 px-5 py-3 text-white rounded w-full bo-ra5 cupo">Get Help</button>
         </form>
-        <div class="w-1/4">
+        <div class="md:w-1/4 w-1/2">
             <app-title title="Contact Detalis"></app-title>
             <div class="flex mb-2">
                 <div class="flex justify-center items-center w-12 h-12 text-white rounded bg-red-700"><i class="fa fa-phone" aria-hidden="true"></i></div>
                 <div class="ml-2">
-                    <p>+91 6382584853</p>
+                    <p>+91 1234567890</p>
                     <p>10AM to 6PM IST</p>
                 </div>
             </div>
