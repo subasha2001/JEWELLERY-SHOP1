@@ -50,12 +50,6 @@ export class ProductsService {
     return this.http.get<bannerType[]>('http://localhost:3000/api/banner');
   }
   
-  todaysGoldRate = new BehaviorSubject<string>('');
-  todaysGoldRate$ = this.todaysGoldRate.asObservable();
-  updateGoldRate(value:string){
-    this.todaysGoldRate.next(value);
-  }
-  
   getAllProducts(): Observable<jewelleryType[]> {
     return this.http.get<jewelleryType[]>(PRODUCTS_URL);
   }

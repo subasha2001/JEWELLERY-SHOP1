@@ -57,10 +57,10 @@ export class CheckoutPageComponent implements OnInit{
       return;
     }
 
-    if(!this.order.addressLatLng){
-      this.toastrservice.warning('Please select your location on the map', 'Location');
-      return;
-    }
+    // if(!this.order.addressLatLng){
+    //   this.toastrservice.warning('Please select your location on the map', 'Location');
+    //   return;
+    // }
 
     this.order.name = this.fc.name.value;
     this.order.address = this.fc.address.value;

@@ -1,4 +1,7 @@
-ul{flex-wrap: wrap;}
+ul{
+    flex-wrap: wrap;
+    border-top: 1px solid #e5e7eb;
+}
 li a{
     height: 20rem;
     border-radius: 1rem;

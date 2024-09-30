@@ -73,6 +73,11 @@ export class AdminPageComponent implements OnInit {
     }
   }
 
+  toDelete:string = '';
+  toDeleteItem(val:string){
+    this.toDelete = val;
+  }
+
   deleteProduct(id: string) {
     this.service.deleteProductById(id).subscribe(() => {
       this.router.navigateByUrl(this.returnUrl);

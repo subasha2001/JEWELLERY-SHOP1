@@ -53,7 +53,7 @@
 }
 .slider-main{
     position: absolute;
-    width: 150%;
+    width: 200%;
     display: flex;
 }
 .item{
@@ -77,4 +77,8 @@
     top: 60px;
     right: -50px;
     transform: translate(-50%, -50%);
+}
+
+@media screen and (max-width:550px) {
+    .slider-main{width: 370%;}
 }

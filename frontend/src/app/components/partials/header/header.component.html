@@ -24,7 +24,7 @@
                 <li><a class="px-2 py-2" [routerLink]="['/admin']">Admin</a></li>
                 <li *ngIf="!isAuth"><a class="px-2 py-2" [routerLink]="['/login']">Login</a></li>
                 <li *ngIf="isAuth" class="relative user">
-                    <a class="px-2 py-2" [routerLink]="['/login']">{{user.name}}</a>
+                    <a class="px-2 py-2">{{user.name}}</a>
                     <div class="logout absolute hidden shadow-xl">
                         <a class="px-2 py-2" href="" (click)="logout()">Logout</a>
                     </div>
@@ -43,12 +43,11 @@
             </div>
         </a>
         <a class="px-2 py-2" routerLink="/cart" class="cart w-9 relative">
-            <!-- <img src="assets/images/cart-bag.svg" alt="">Cart -->
             <i class="fa fa-shopping-bag fa-3x" aria-hidden="true"></i>
             <div class="absolute top-4 left-5">{{cartQuantity}}</div>
         </a>
     </div>
-    <div class="bg-red-700 h-10 flex items-center">
+    <div class="bg-red-700 h-10 items-center hidden md:flex">
         <div class="categories mx-w mx-auto text-white">
             <ul class="flex justify-start items-center">
                 <li><a class="mr-3 p-2" [routerLink]="['/']">Home</a></li>
