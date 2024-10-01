@@ -57,3 +57,26 @@
     width: 100%;
   }
 }
+
+/* CSS */
+.button-36 {
+  background-image: linear-gradient(92.88deg, #b91c1cd4 1.16%, #b91c1c 47.89%, #b91c1cd4 83.72%);
+  color: #FFFFFF;
+  font-weight: 500;
+  height: 3rem;
+  transition: all .5s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-36:hover {
+  box-shadow: rgb(185 28 28) 0px 0px 30px -5px;
+  transition-duration: .1s;
+}
+
+@media (min-width: 768px) {
+  .button-36 {
+    padding: 0 2.6rem;
+  }
+}

@@ -17,13 +17,14 @@
             <button class="bg-red-700 px-5 py-3 text-white rounded w-full bo-ra5 cupo">Add Product</button>
         </form>
     </div>
-
+    
     <div class="mt-9 w-2/3 md:w-1/6 flex flex-col justify-around">
-        <form #images="ngForm" class="flex flex-col items-center">
-            <label class="my-3" for="">Add Product images</label>
-            <input type="file" (change)="getImgDis($event)" name="imageDis" ngModel>
-            <input type="file" (change)="getImgHov($event)" placeholder="Hover image" name="imageHov" ngModel>
-            <button (click)="onUpload()" class="bg-red-700 px-5 py-3 text-white rounded w-full bo-ra5 cupo">Add Image for Product</button>
+        <form class="flex flex-col items-center" action="/stats" enctype="multipart/form-data" method="post">
+            <!-- <label class="my-3" for="">Add Product images</label> -->
+            <input type="file" name="image_Dis">
+            <!-- <input type="file" name="image_Hov"> -->
+            <input type="submit" value="Upload images!" class="bg-red-700 px-5 py-3 rounded w-full bo-ra5 cursor-pointer hover:shadow-xl">
+            <!-- <button (click)="onUpload()" class="bg-red-700 px-5 py-3 text-white rounded w-full bo-ra5 cupo">Add Image for Product</button> -->
         </form>
         <form class="flex flex-col items-center">
             <label class="my-3" for="">Today's Gold Rate</label>
@@ -48,9 +49,9 @@
 <h2 class="mx-auto mx-w text-center text-xl mb-5">Delete products here</h2>
 <ul class="flex justify-center text-xl">
     <li class="mr-9 border p-3"><a (click)="toDeleteItem('gold')">Gold</a></li>
-    <li class="mr-9 border p-3"><a (click)="toDeleteItem('silver')" >Silver</a></li>
-    <li class="mr-9 border p-3"><a (click)="toDeleteItem('diamond')" >Diamond</a></li>
-    <li class="mr-9 border p-3"><a (click)="toDeleteItem('coin')" >Coins</a></li>
+    <li class="mr-9 border p-3"><a (click)="toDeleteItem('silver')">Silver</a></li>
+    <li class="mr-9 border p-3"><a (click)="toDeleteItem('diamond')">Diamond</a></li>
+    <li class="mr-9 border p-3"><a (click)="toDeleteItem('coin')">Coins</a></li>
 </ul>
 
 <table class="mx-w mx-auto w-3/4">
@@ -62,9 +63,11 @@
             <th>Action</th>
         </tr>
         <tr *ngFor="let data of products" class="text-center border-b-2">
-            <td class="" *ngIf="data.metalType?.includes(toDelete)"><img class="mx-auto w-20 h-20 object-cover rounded-full"
+            <td class="" *ngIf="data.metalType?.includes(toDelete)"><img
+                    class="mx-auto w-20 h-20 object-cover rounded-full"
                     src="assets/images/{{data.metalType}}/{{data.imageDis}}" [alt]="data.name"></td>
-            <td class="w-2/5" *ngIf="data.metalType?.includes(toDelete)"><a routerLink="/products/{{data.id}}">{{data.name}}</a></td>
+            <td class="w-2/5" *ngIf="data.metalType?.includes(toDelete)"><a
+                    routerLink="/products/{{data.id}}">{{data.name}}</a></td>
             <td class="hidden md:block" *ngIf="data.metalType?.includes(toDelete)">{{data.weight}} gms</td>
             <td class="mt-5" *ngIf="data.metalType?.includes(toDelete)">
                 <button class="cupo remove-button" (click)="deleteProduct(data.id)">

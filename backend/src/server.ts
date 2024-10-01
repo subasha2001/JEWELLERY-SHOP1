@@ -17,14 +17,18 @@ app.use(cors({
     origin:["http://localhost:4200"]
 }));
 
-
 app.use("/api/products", productsRouter)
 app.use("/api/banner", bannerRouter)
 app.use("/api/users", userRouter);
+
+import multer from "multer"
+const upload = multer({dest:'./public/assets2/gold/'})
+app.post('/stats', upload.single('image_Dis'), (req, res)=>{
+    res.send(req.body);
+})
 
 const port = 3000;
 
 app.listen(port,()=>{
     console.log('connected to '+ port);
 });
-

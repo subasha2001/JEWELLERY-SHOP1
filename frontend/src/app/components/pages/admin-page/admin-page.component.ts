@@ -89,29 +89,29 @@ export class AdminPageComponent implements OnInit {
     })
   }
 
-  file: File | null = null;
+  // file: File | null = null;
 
-  getImgDis(event: any) {
-    const file: File = event.target.files[0];
+  // getImgDis(event: any) {
+  //   const file: File = event.target.files[0];
 
-    if (file) {
-      this.file = file;
-    }
-  }
-  getImgHov(event: any) {
-    const file: File = event.target.files[0];
+  //   if (file) {
+  //     this.file = file;
+  //   }
+  // }
+  // getImgHov(event: any) {
+  //   const file: File = event.target.files[0];
 
-    if (file) {
-      this.file = file;
-    }
-  }
-  onUpload() {
-    if (this.file) {
-      this.service.uploadfile(this.file).subscribe(resp => {
-        alert("Uploaded");
-      })
-    } else {
-      alert("Please select a file first")
-    }
-  }
+  //   if (file) {
+  //     this.file = file;
+  //   }
+  // }
+  // onUpload() {
+  //   if (this.file) {
+  //     this.service.uploadfile(this.file).subscribe(resp => {
+  //       alert("Uploaded");
+  //     })
+  //   } else {
+  //     alert("Please select a file first")
+  //   }
+  // }
 }
