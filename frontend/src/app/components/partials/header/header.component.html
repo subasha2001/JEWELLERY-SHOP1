@@ -32,14 +32,17 @@
             </ul>
         </div>
         <div class="text-xs hidden md:block">
-            <p>GOLD RARE: {{goldRate | currency:'&#8377; '}}</p>
+            <p>GOLD RATE: {{goldRate | currency:'&#8377; '}}</p>
             <p>SILVER RATE: {{silverRate | currency:'&#8377; '}}</p>
         </div>
         <a class="rates block relative md:hidden" href="">
             <i class="fa fa-chevron-down" aria-hidden="true"></i>
-            <div class="text-xs hidden absolute">
-                <p>GOLD RARE: {{goldRate | currency:'&#8377; '}}</p>
+            <div class="text-xs hidden absolute shadow-xl">
+                <p>GOLD RATE (18K): {{goldRate | currency:'&#8377; '}}</p>
+                <p>GOLD RATE (22K): {{goldRate | currency:'&#8377; '}}</p>
+                <p>GOLD RATE (24K): {{goldRate | currency:'&#8377; '}}</p>
                 <p>SILVER RATE: {{silverRate | currency:'&#8377; '}}</p>
+                <p>GST: {{silverRate | currency:'&#8377; '}}</p>
             </div>
         </a>
         <a class="px-2 py-2" routerLink="/cart" class="cart w-9 relative">
@@ -47,7 +50,7 @@
             <div class="absolute top-4 left-5">{{cartQuantity}}</div>
         </a>
     </div>
-    <div class="bg-red-700 h-10 items-center hidden md:flex">
+    <div class="header2 bg-red-700 h-10 items-center hidden md:flex">
         <div class="categories mx-w mx-auto text-white">
             <ul class="flex justify-start items-center">
                 <li><a class="mr-3 p-2" [routerLink]="['/']">Home</a></li>

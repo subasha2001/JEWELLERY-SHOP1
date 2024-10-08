@@ -64,9 +64,11 @@ export class AdminPageComponent implements OnInit {
     }
   }
 
-  updateGoldRate(gold: string, silver: string, gst: string) {
-    if (gold) {
-      localStorage.setItem('goldRate', JSON.stringify(gold));
+  updateRate(gold22: string, gold18: string, gold24: string, silver: string, gst: string) {
+    if (gold22) {
+      localStorage.setItem('goldRate22', JSON.stringify(gold22));
+      localStorage.setItem('goldRate18', JSON.stringify(gold18));
+      localStorage.setItem('goldRate24', JSON.stringify(gold24));
       localStorage.setItem('silverRate', JSON.stringify(silver));
       localStorage.setItem('gst', JSON.stringify(gst));
       location.reload();

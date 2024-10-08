@@ -1,8 +1,8 @@
 <div class="space-top"></div>
 <app-title title="Cart Page" margin="2rem 0 0 2.5rem" color="#616161"></app-title>
-<!-- <app-page-not-found [visible]="!cart || !cart.items.length" notFoundMsg="Cart Page Is Empty"
+<app-page-not-found [visible]="!cart || !cart.items.length" notFoundMsg="Cart Page Is Empty"
     resetLinkText="Go To HomePage">
-</app-page-not-found> -->
+</app-page-not-found>
 <div class="mx-w flex flex-wrap">
     <ul class="flex"  *ngIf="cart && cart.items.length">
         <li *ngFor="let data of cart.items" class="flex items-center flex-wrap">
@@ -18,7 +18,7 @@
                     <option>5</option>
                 </select>
             </div>
-            <div>{{data.product.weight*goldRate + data.product.makingCost/100*goldRate*data.product.weight + data.product.weight*goldRate*data.product.wastage/100 | currency:"&#8377; "}}</div>
+            <div>{{data.product.weight*goldRate22 + data.product.makingCost/100*goldRate22*data.product.weight + data.product.weight*goldRate22*data.product.wastage/100 | currency:"&#8377; "}}</div>
             <div><button class="cupo remove-button" (click)="removeFromCart(data)">Remove</button></div>
         </li>
     </ul>

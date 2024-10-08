@@ -3,8 +3,6 @@ import asyncHandler from 'express-async-handler';
 import { jewelleryType } from "../dataType";
 import { ProductsModel } from "../models/products.model";
 import { jewellers } from "../data";
-import multer from "multer"
-import path from "path";
 const router = Router();
 
 router.get("/seed", asyncHandler(

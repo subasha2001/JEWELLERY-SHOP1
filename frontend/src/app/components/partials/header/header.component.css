@@ -37,13 +37,16 @@ a:hover{
     transform: translateY(-20px);
     transition: all 0.12s linear;
 }
-.header-1 a{
-    padding: 8px;
-}
 .header{
     position: fixed;
     z-index: 100;
     width: 100%;
+}
+.header1{
+    height: 80px;
+}
+.header2 a:hover{
+    background-color: rgba(255, 255, 0, 0.774);color: black;
 }
 .logo{
     width: 100px;
@@ -62,14 +65,18 @@ a:hover{
 }
 .rates:hover div{
     display: block;
-    left: -80px;
+    left: -110px;
     top: 30px;
-    width: 175px;
+    width: 220px;
     background-color: white;
     padding: 10px;
     color: black;
     font-size: 15px;
     line-height: 25px;
+    z-index: 2;
+}
+.rates p{
+    padding: 5px;
 }
 .cart{color: white;}
 .cart:hover{background-color: transparent;color: white;}

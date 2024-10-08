@@ -28,12 +28,16 @@
         </form>
         <form class="flex flex-col items-center">
             <label class="my-3" for="">Today's Gold Rate</label>
-            <input #todaysGoldRate type="number" placeholder="Enter Today's Gold rate in rupees" name="GoldRate"
+            <input #GoldRate22 type="number" placeholder="Enter Today's Gold rate(22k) in rupees" name="GoldRate22"
                 ngModel>
-            <input #todaysSilverRate type="number" placeholder="Enter Today's Silver rate in rupees" name="SilverRate"
+            <input #GoldRate18 type="number" placeholder="Enter Today's Gold rate(18k) in rupees" name="GoldRate18"
+                ngModel>
+            <input #GoldRate24 type="number" placeholder="Enter Today's Gold rate(24k) in rupees" name="GoldRate24"
+                ngModel>
+            <input #SilverRate type="number" placeholder="Enter Today's Silver rate in rupees" name="SilverRate"
                 ngModel>
             <input #gst type="number" placeholder="Enter Shop's GST in percentage" name="GST" ngModel>
-            <button (click)="updateGoldRate(todaysGoldRate.value, todaysSilverRate.value, gst.value)"
+            <button (click)="updateRate(GoldRate22.value, GoldRate18.value, GoldRate24.value, SilverRate.value, gst.value)"
                 class="bg-red-700 px-5 py-3 text-white rounded w-full bo-ra5 cupo">UPDATE</button>
         </form>
         <form #banner="ngForm" (ngSubmit)="addBanner(banner.value)" class="flex flex-col items-center">
