@@ -9,3 +9,4 @@ input{
     border-radius: 5px;
     outline: none;
 }
+.imageUpBut{background-color: rgb(185 28 28 / var(--tw-bg-opacity));;color: white;}

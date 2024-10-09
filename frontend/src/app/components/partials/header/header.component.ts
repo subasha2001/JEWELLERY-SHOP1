@@ -21,7 +21,9 @@ export class HeaderComponent {
   products!:jewelleryType[];
   metalType?:metalType[];
   categories?:Category[];
-  goldRate!:string | null;
+  goldRate22!:string | null;
+  goldRate24!:string | null;
+  goldRate18!:string | null;
   user!:User;
   silverRate!:string | null;
   cartQuantity!:number;
@@ -40,12 +42,14 @@ export class HeaderComponent {
     })
 
     if(typeof localStorage!== 'undefined'){
-      const goldrate = localStorage.getItem('goldRate');
+      const goldrate22 = localStorage.getItem('goldRate22');
+      const goldrate18 = localStorage.getItem('goldRate18');
+      const goldrate24 = localStorage.getItem('goldRate24');
       const silverrate = localStorage.getItem('silverRate');
 
-      if(goldrate){
-        this.goldRate = JSON.parse(goldrate);
-      }
+      if(goldrate22){this.goldRate22 = JSON.parse(goldrate22)};
+      if(goldrate18){this.goldRate18 = JSON.parse(goldrate18)};
+      if(goldrate24){this.goldRate24 = JSON.parse(goldrate24)};
 
       if(silverrate){
         this.silverRate = JSON.parse(silverrate);

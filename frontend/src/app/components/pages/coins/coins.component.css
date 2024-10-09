@@ -30,3 +30,12 @@ li a:hover img.default_img{
     opacity: 0;
     z-index: -1;
 }
+.price{
+    position: absolute;
+    padding: 10px 0 10px 20px;
+    background-color: #b91c1c;
+    border-bottom-left-radius: 17px;
+    border-bottom-right-radius: 17px;
+    color: white;
+    width: 209px;
+}

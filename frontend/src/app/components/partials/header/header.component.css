@@ -41,16 +41,29 @@ a:hover{
     position: fixed;
     z-index: 100;
     width: 100%;
+    max-width: 1300px;
+    top: 15px;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    border-radius: 45px;
 }
 .header1{
     height: 80px;
+}
+.header2{
+    border-bottom-right-radius: 45px;
+    border-bottom-left-radius: 45px;
+    max-width: 1298px;
+    margin: 0 auto;
+    margin-bottom: -2px;
 }
 .header2 a:hover{
     background-color: rgba(255, 255, 0, 0.774);color: black;
 }
 .logo{
     width: 100px;
-    height: 100px;
+    height: 80px;
 }
 .admin .user:hover .logout{
     display: block;

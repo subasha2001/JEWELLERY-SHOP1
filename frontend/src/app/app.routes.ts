@@ -13,6 +13,7 @@ import { CartPageComponent } from './components/pages/cart-page/cart-page.compon
 import { CheckoutPageComponent } from './components/pages/checkout-page/checkout-page.component';
 import { CoinsComponent } from './components/pages/coins/coins.component';
 import { SchemesComponent } from './components/pages/schemes/schemes.component';
+import { DiamondJewelsComponent } from './components/pages/diamond-jewels/diamond-jewels.component';
 
 export const routes: Routes = [
     {path:'', component:HomePageComponent},
@@ -24,6 +25,7 @@ export const routes: Routes = [
     {path:'category/gold/:categoryName', component:GoldJewelsComponent},
     {path:'category/coin/:categoryName', component:CoinsComponent},
     {path:'category/silver/:categoryName', component:SilverJewelsComponent},
+    {path:'category/diamond/:categoryName', component:DiamondJewelsComponent},
     {path:'delete/:id', component:HomePageComponent},
     {path:'contact', component:ContactComponent},
     {path:'login', component:LoginComponent},

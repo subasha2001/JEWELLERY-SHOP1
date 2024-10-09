@@ -1,4 +1,4 @@
-<div class="header border-b-2 bg-gray-100">
+<div class="header border-b-2 bg-gray-100 shadow-xl">
     <div class="header1 flex justify-between px-10 mx-w m-auto items-center">
         <div class="logo flex items-center">
             <a class="px-2 py-2 logo flex items-center" [routerLink]="['/']">
@@ -31,16 +31,12 @@
                 </li>
             </ul>
         </div>
-        <div class="text-xs hidden md:block">
-            <p>GOLD RATE: {{goldRate | currency:'&#8377; '}}</p>
-            <p>SILVER RATE: {{silverRate | currency:'&#8377; '}}</p>
-        </div>
-        <a class="rates block relative md:hidden" href="">
+        <a class="rates block relative" href="">
             <i class="fa fa-chevron-down" aria-hidden="true"></i>
             <div class="text-xs hidden absolute shadow-xl">
-                <p>GOLD RATE (18K): {{goldRate | currency:'&#8377; '}}</p>
-                <p>GOLD RATE (22K): {{goldRate | currency:'&#8377; '}}</p>
-                <p>GOLD RATE (24K): {{goldRate | currency:'&#8377; '}}</p>
+                <p>GOLD RATE (18K): {{goldRate18 | currency:'&#8377; '}}</p>
+                <p>GOLD RATE (22K): {{goldRate22 | currency:'&#8377; '}}</p>
+                <p>GOLD RATE (24K): {{goldRate24 | currency:'&#8377; '}}</p>
                 <p>SILVER RATE: {{silverRate | currency:'&#8377; '}}</p>
                 <p>GST: {{silverRate | currency:'&#8377; '}}</p>
             </div>
@@ -133,7 +129,7 @@
                         </a>
                     </div>
                     <div class="absolute silver flex-wrap z-10 top-8 left-0 bg-white text-black shadow-xl" *ngIf="metal.name.includes('diamond')">
-                        <a routerLink="/category/diamond/earing">
+                        <a routerLink="/category/diamond/necklace">
                             <div  class="flex-col">
                                 <img src="assets/images/diamond/diamondNecklace-1-d.jpg" alt="">
                                 <h3 class="text-center">Diamond Necklace</h3>
@@ -145,7 +141,7 @@
                                 <h3 class="text-center">Diamond Ring</h3>
                             </div>
                         </a>
-                        <a routerLink="/category/diamond/bangle">
+                        <a routerLink="/category/diamond/bangles">
                             <div  class="flex-col">
                                 <img src="assets/images/diamond/diamondBangle-1-d.jpg" alt="">
                                 <h3 class="text-center">Diamond Bangles</h3>

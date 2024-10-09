@@ -12,26 +12,26 @@
     <ul class="flex justify-center items-center mx-w mx-auto">
         <li *ngFor="let data of products">
             <a routerLink='/product/{{data.id}}' *ngIf="data.featured == 'true'"
-                class="relative px-5 md:w-60 w-52 shadow hover:shadow-xl flex justify-center flex-col">
+                class="relative md:w-60 w-52 shadow hover:shadow-xl flex justify-center flex-col">
                 <img class="w-8/12 z-10 default_img absolute top-6 left-10"
                     src="/assets/images/{{data.metalType}}/{{data.imageDis}}" [alt]="data.name" />
                 <img class="w-8/12 z-10 hover_img absolute top-6 left-10"
                     src="/assets/images/{{data.metalType}}/{{data.imageHov}}" [alt]="data.name" />
                 <div class="content absolute top-16">
-                    <div class="text-base font-medium py-2 h-16 flex items-center">{{data.name}}</div>
+                    <div class="text-sm font-medium py-2 px-5 h-16 flex items-center">{{data.name}}</div>
                     <hr>
-                    <div class="font-light py-1">Weight: {{data.weight}} gms</div>
+                    <div class="font-light py-1 px-5">Weight: {{data.weight}} gms</div>
                     <hr>
-                    <div class="mr-auto absolute mt-1" *ngIf="data.metalType?.includes('gold')">
+                    <div class="price" *ngIf="data.metalType?.includes('gold')">
                         <span>Price: {{data.weight*GR | currency:"&#8377; "}}</span>
                     </div>
-                    <div class="mr-auto absolute mt-1" *ngIf="data.metalType?.includes('coin')">
+                    <div class="price" *ngIf="data.metalType?.includes('coin')">
                         <span>Price: {{data.weight*GR | currency:"&#8377; "}}</span>
                     </div>
-                    <div class="mr-auto absolute mt-1" *ngIf="data.metalType?.includes('silver')">
+                    <div class="price" *ngIf="data.metalType?.includes('silver')">
                         <span>Price: {{data.weight*SR | currency:"&#8377; "}}</span>
                     </div>
-                    <div class="mr-auto absolute mt-1" *ngIf="data.metalType?.includes('diamond')">
+                    <div class="price" *ngIf="data.metalType?.includes('diamond')">
                         <span>Price: {{data.weight*GR + data.weight*data.makingCost | currency:"&#8377; "}}</span>
                     </div>
                 </div>
@@ -45,26 +45,26 @@
     <ul class="flex justify-center items-center mx-w mx-auto">
         <li *ngFor="let data of products">
             <a routerLink='/product/{{data.id}}' *ngIf="data.featured == 'top'"
-                class="relative px-5 md:w-60 w-52 shadow hover:shadow-xl flex justify-center flex-col">
+                class="relative md:w-60 w-52 shadow hover:shadow-xl flex justify-center flex-col">
                 <img class="w-8/12 z-10 default_img absolute top-6 left-10"
                     src="/assets/images/{{data.metalType}}/{{data.imageDis}}" [alt]="data.name" />
                 <img class="w-8/12 z-10 hover_img absolute top-6 left-10"
                     src="/assets/images/{{data.metalType}}/{{data.imageHov}}" [alt]="data.name" />
                 <div class="content absolute top-16">
-                    <div class="text-base font-medium py-2 h-16 flex items-center">{{data.name}}</div>
+                    <div class="text-sm font-medium px-5 py-2 h-16 flex items-center">{{data.name}}</div>
                     <hr>
-                    <div class="font-light py-1">Weight: {{data.weight}} gms</div>
+                    <div class="font-light px-5 py-1">Weight: {{data.weight}} gms</div>
                     <hr>
-                    <div class="mr-auto absolute mt-1" *ngIf="data.metalType?.includes('gold')">
+                    <div class="price" *ngIf="data.metalType?.includes('gold')">
                         <span>Price: {{data.weight*GR | currency:"&#8377; "}}</span>
                     </div>
-                    <div class="mr-auto absolute mt-1" *ngIf="data.metalType?.includes('coin')">
+                    <div class="price" *ngIf="data.metalType?.includes('coin')">
                         <span>Price: {{data.weight*GR | currency:"&#8377; "}}</span>
                     </div>
-                    <div class="mr-auto absolute mt-1" *ngIf="data.metalType?.includes('silver')">
+                    <div class="price" *ngIf="data.metalType?.includes('silver')">
                         <span>Price: {{data.weight*SR | currency:"&#8377; "}}</span>
                     </div>
-                    <div class="mr-auto absolute mt-1" *ngIf="data.metalType?.includes('diamond')">
+                    <div class="price" *ngIf="data.metalType?.includes('diamond')">
                         <span>Price: {{data.weight*GR + data.weight*data.makingCost | currency:"&#8377; "}}</span>
                     </div>
                 </div>

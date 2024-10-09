@@ -19,7 +19,7 @@
                         <hr>
                         <div class="font-light py-1">Weight: {{data.weight}} gms</div>
                         <hr>
-                        <div class="mr-auto absolute mt-1" *ngIf="data.metalType?.includes('silver')">
+                        <div class="price w-52 md:w-60" *ngIf="data.metalType?.includes('silver')">
                             <span>Price: {{data.weight * SR | currency:"&#8377; "}}</span>
                         </div>
                     </div>

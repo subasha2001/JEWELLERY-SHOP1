@@ -3,22 +3,20 @@
 <app-page-not-found [visible]="!cart || !cart.items.length" notFoundMsg="Cart Page Is Empty"
     resetLinkText="Go To HomePage">
 </app-page-not-found>
-<div class="mx-w flex flex-wrap">
-    <ul class="flex"  *ngIf="cart && cart.items.length">
-        <li *ngFor="let data of cart.items" class="flex items-center flex-wrap">
+<div class="mx-w flex flex-wrap flex-col md:flex-row">
+    <ul class="flex" *ngIf="cart && cart.items.length">
+        <li *ngFor="let data of cart.items" class="flex items-center flex-wrap justify-evenly">
             <div><img src="assets/images/{{data.product.metalType}}/{{data.product.imageDis}}" [alt]="data.product.name"></div>
-            <div><a routerLink="/food/{{data.product.id}}">{{data.product.name}}
+            <div class="hidden md:block"><a routerLink="/food/{{data.product.id}}">{{data.product.name}}
                 </a></div>
             <div>
                 <select #quantitySelect [value]="data.quantity" (change)="changeQuantity(data, quantitySelect.value)">
                     <option>1</option>
                     <option>2</option>
                     <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
                 </select>
             </div>
-            <div>{{data.product.weight*goldRate22 + data.product.makingCost/100*goldRate22*data.product.weight + data.product.weight*goldRate22*data.product.wastage/100 | currency:"&#8377; "}}</div>
+            <div class="w-2">{{data.product.weight*goldRate22 | currency:"&#8377; "}}</div>
             <div><button class="cupo remove-button" (click)="removeFromCart(data)">Remove</button></div>
         </li>
     </ul>

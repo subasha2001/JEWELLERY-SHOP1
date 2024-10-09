@@ -39,6 +39,8 @@ export class CartPageComponent {
       if (goldrate24) {this.goldRate22 = JSON.parse(goldrate24);}
       if (silverrate) {this.silverRate = JSON.parse(silverrate);}
     }
+
+    console.log(this.goldRate22);
   }
 
   removeFromCart(cartItem:CartItem){        

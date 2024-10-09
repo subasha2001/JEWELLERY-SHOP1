@@ -94,6 +94,8 @@ li span{
     font-size: 15px;text-align: center;
     display: flex;align-items: center;
 }
+.head1.sub-head{transform: translateX(-200px);}
+.head3.sub-head{transform: translateX(200px);}
 .cont-2 .line, .cont-3 .line{
     display: block;
     position: absolute;
