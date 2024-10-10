@@ -7,6 +7,7 @@ import productsRouter from "./routes/products.router";
 import { dbConnect } from './configs/db.config';
 import bannerRouter from './routes/banner.router';
 import userRouter from './routes/user.router';
+import path from 'path';
 dbConnect();
 
 const app = express();
@@ -21,8 +22,16 @@ app.use("/api/banner", bannerRouter)
 app.use("/api/users", userRouter);
 
 import multer from "multer"
-const upload = multer({dest:'./public/assets2/gold/'})
-app.post('/stats', upload.single('image_Dis'), (req, res)=>{
+const upload = multer({
+    dest:'/public/assets2/gold/'
+})
+// app.post('/stats', upload.single('imageDis'), (req, res, next)=>{
+//     const data = req.body;
+//     const file = req.file;
+//     console.log(data, file);
+//     res.send(file)
+// })
+app.post('/upload', upload.single('imageDis'), (req,res)=>{
     res.send(req.body);
 })
 

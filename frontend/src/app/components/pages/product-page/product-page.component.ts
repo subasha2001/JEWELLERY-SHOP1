@@ -13,7 +13,9 @@ import { CartService } from '../../../services/cart.service';
   styleUrl: './product-page.component.css'
 })
 export class ProductPageComponent{
-  GR!: number;
+  GR22!: number;
+  GR24!: number;
+  GR18!: number;
   SR!: number;
   gst!:number;
   makingcost!: number;
@@ -34,21 +36,17 @@ export class ProductPageComponent{
     })
 
     if (typeof localStorage !== 'undefined') {
-      const goldrate = localStorage.getItem('goldRate');
+      const goldrate22 = localStorage.getItem('goldRate22');
+      const goldrate24 = localStorage.getItem('goldRate24');
+      const goldrate18 = localStorage.getItem('goldRate18');
       const silverrate = localStorage.getItem('silverRate');
       const gst = localStorage.getItem('gst');
 
-      if (goldrate) {
-        this.GR = JSON.parse(goldrate);
-      }
-
-      if (silverrate) {
-        this.SR = JSON.parse(silverrate);
-      }
-
-      if (gst) {
-        this.gst = JSON.parse(gst)/100;
-      }
+      if (goldrate22) {this.GR22 = JSON.parse(goldrate22);}
+      if (goldrate24) {this.GR24 = JSON.parse(goldrate24);}
+      if (goldrate18) {this.GR18 = JSON.parse(goldrate18);}
+      if (silverrate) {this.SR = JSON.parse(silverrate);}
+      if (gst) {this.gst = JSON.parse(gst)/100;}
     }
   }
   

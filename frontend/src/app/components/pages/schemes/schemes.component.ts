@@ -28,29 +28,20 @@ export class SchemesComponent implements OnInit{
   animate(){
      
     gsap.to(".head1",{
-      scrollTrigger: {
-        trigger: "head1",
-        toggleActions: "restart pause reverse pause"
-      }, 
+      scrollTrigger: "head1", 
       x: 0, 
       duration: 1,
       ease: "power2.inOut"
     });
     gsap.to('.head3',{
-      scrollTrigger: {
-        trigger: "head3",
-        toggleActions: "restart pause reverse pause"
-      }, 
+      scrollTrigger: ".head3", 
       x: 0, 
       duration: 1, 
       ease: "power2.inOut"
     });
     gsap.from('h3',{scrollTrigger: "h3", y: 300, opacity:0, duration: 1, ease: "power2.inOut"});
     gsap.from('.underline',{
-      scrollTrigger: {
-        trigger: "underline",
-        toggleActions: "restart pause reverse pause"
-      },
+      scrollTrigger: ".underline",
       y: 300, 
       opacity:0, 
       duration: 1, 

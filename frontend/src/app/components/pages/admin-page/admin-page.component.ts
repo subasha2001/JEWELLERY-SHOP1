@@ -7,6 +7,8 @@ import { ProductsService } from '../../../services/products.service';
 import { Observable, throwError } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { bannerType } from '../../../shared/models/bannerType';
+import { log } from 'node:console';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-admin-page',
@@ -25,6 +27,7 @@ export class AdminPageComponent implements OnInit {
     private actRoute: ActivatedRoute,
     private service: ProductsService,
     private router: Router,
+    private http:HttpClient
   ) {
     this.actRoute.params.subscribe((params) => {
       let productsObservable: Observable<jewelleryType[]>;
@@ -91,15 +94,12 @@ export class AdminPageComponent implements OnInit {
     })
   }
 
-  // file: File | null = null;
+  file:any;
 
-  // getImgDis(event: any) {
-  //   const file: File = event.target.files[0];
-
-  //   if (file) {
-  //     this.file = file;
-  //   }
-  // }
+  getImgDis(event: any) {
+    this.file = event.target.files[0];
+    console.log('file',this.file);
+  }
   // getImgHov(event: any) {
   //   const file: File = event.target.files[0];
 
@@ -107,13 +107,10 @@ export class AdminPageComponent implements OnInit {
   //     this.file = file;
   //   }
   // }
-  // onUpload() {
-  //   if (this.file) {
-  //     this.service.uploadfile(this.file).subscribe(resp => {
-  //       alert("Uploaded");
-  //     })
-  //   } else {
-  //     alert("Please select a file first")
-  //   }
-  // }
+  onUpload() {
+    let form = new FormData();
+    form.set('file', this.file)
+
+    this.http.post('http://localhost:3000/upload', form).subscribe((response)=>{})
+  }
 }

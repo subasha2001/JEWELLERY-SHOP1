@@ -19,17 +19,17 @@
                     <hr>
                     <div class="font-light px-5 py-1">Weight: {{data.weight}} gms</div>
                     <hr>
-                    <div class="price" *ngIf="data.metalType?.includes('gold')">
-                        <span>Price: {{data.weight * GR | currency:"&#8377; "}}</span>
+                    <div class="price md:w-60 w-52" *ngIf="data.metalType?.includes('gold')">
+                        <span>Price: {{data.weight * GR22 | currency:"&#8377; "}}</span>
                     </div>
-                    <div class="price" *ngIf="data.metalType?.includes('coin')">
-                        <span>Price: {{data.weight * GR | currency:"&#8377; "}}</span>
+                    <div class="price md:w-60 w-52" *ngIf="data.metalType?.includes('coin')">
+                        <span>Price: {{data.weight * GR24 | currency:"&#8377; "}}</span>
                     </div>
-                    <div class="price" *ngIf="data.metalType?.includes('silver')">
+                    <div class="price md:w-60 w-52" *ngIf="data.metalType?.includes('silver')">
                         <span>Price: {{data.weight * SR | currency:"&#8377; "}}</span>
                     </div>
-                    <div class="price" *ngIf="data.metalType?.includes('diamond')">
-                        <span>Price: {{data.weight * GR | currency:"&#8377; "}}</span>
+                    <div class="price md:w-60 w-52" *ngIf="data.metalType?.includes('diamond')">
+                        <span>Price: {{data.weight * GR24| currency:"&#8377; "}}</span>
                     </div>
                 </div>
             </a>

@@ -28,9 +28,9 @@ export class ProductsService {
     )
   }
   public uploadfile(file: File) {
-    let formParams = new FormData();
-    formParams.append('file', file)
-    return this.http.post('http://localhost:3000/api/products/uploadImages', formParams)
+    let form = new FormData();
+    form.append('imageDis', file)
+    return this.http.post('http://localhost:3000/api/products/uploadImages', form)
   }
 
   addBanner(data:bannerType): Observable<bannerType>{

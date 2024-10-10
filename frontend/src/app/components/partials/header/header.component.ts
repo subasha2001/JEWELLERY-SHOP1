@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { ProductsService } from '../../../services/products.service';
 import { jewelleryType } from '../../../shared/models/productType';
@@ -17,7 +17,7 @@ import { CartService } from '../../../services/cart.service';
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit{
   products!:jewelleryType[];
   metalType?:metalType[];
   categories?:Category[];
@@ -64,10 +64,18 @@ export class HeaderComponent {
       this.cartQuantity = newCart.totalCount; 
     }))
   }
+  ngOnInit(): void {
+    gsap.registerPlugin(ScrollTrigger);
+    this.animate();
+  }
   logout(){
     this.userService.logout();
   }
   get isAuth(){
     return this.user.name;
+  }
+
+  animate(){
+    gsap.from(".logo",{scrollTrigger:".logo", y:500, opacity:0, duration:2, delay:1})
   }
 }

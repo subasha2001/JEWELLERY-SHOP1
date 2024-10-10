@@ -19,11 +19,12 @@
     </div>
     
     <div class="mt-9 w-2/3 md:w-2/6 flex flex-col justify-around">
-        <form class="flex flex-col items-center" action="/stats" enctype="multipart/form-data" method="post">
-            <!-- <label class="my-3" for="">Add Product images</label> -->
-            <input type="file" name="image_Dis">
+        <form action="/stats" class="flex flex-col items-center" enctype="multipart/form-data" method="POST">
+            <label class="my-3" for="">Add Product images</label>
+            <input type="file" name="imageDis" (change)="getImgDis($event)">
             <!-- <input type="file" name="image_Hov"> -->
-            <input type="submit" value="Upload images!" class="imageUpBut bg-red-700 px-5 py-3 rounded w-full bo-ra5 cursor-pointer hover:shadow-xl">
+            <!-- <input type="submit" value="Upload images!" class="imageUpBut bg-red-700 px-5 py-3 rounded w-full bo-ra5 cursor-pointer hover:shadow-xl"> -->
+            <input type="button" (click)="onUpload()" value="Upload images!" class="imageUpBut bg-red-700 px-5 py-3 rounded w-full bo-ra5 cursor-pointer hover:shadow-xl">
             <!-- <button (click)="onUpload()" class="bg-red-700 px-5 py-3 text-white rounded w-full bo-ra5 cupo">Add Image for Product</button> -->
         </form>
         <form class="flex flex-col items-center">

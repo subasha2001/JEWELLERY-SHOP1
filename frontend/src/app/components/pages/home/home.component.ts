@@ -17,10 +17,12 @@ import { PageNotFoundComponent } from "../../partials/page-not-found/page-not-fo
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit{
 
   products: jewelleryType[] = [];
-  GR!:number;
+  GR22!:number;
+  GR24!:number;
+  GR18!:number;
   SR!:number;
 
   constructor(private service: ProductsService, private actRoute: ActivatedRoute) {
@@ -41,17 +43,27 @@ export class HomeComponent {
       })
 
       if(typeof localStorage!== 'undefined'){
-        const goldrate = localStorage.getItem('goldRate');
+        const goldrate22 = localStorage.getItem('goldRate22');
+        const goldrate24 = localStorage.getItem('goldRate24');
+        const goldrate18 = localStorage.getItem('goldRate18');
         const silverrate = localStorage.getItem('silverRate');
   
-        if(goldrate){
-          this.GR = JSON.parse(goldrate);
-        }
-
-        if(silverrate){
-          this.SR = JSON.parse(silverrate);
-        }
+        if(goldrate22){this.GR22 = JSON.parse(goldrate22);}
+        if(goldrate24){this.GR24 = JSON.parse(goldrate24);}
+        if(goldrate18){this.GR18 = JSON.parse(goldrate18);}
+        if(silverrate){this.SR = JSON.parse(silverrate);}
       }
+    })
+  }
+  ngOnInit(): void {
+    this.animate();
+  }
+  animate(){
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.to('.hover_img',{
+      rotateX: 360,
+      animationIterationCount: Infinity      
     })
   }
 }

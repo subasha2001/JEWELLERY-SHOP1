@@ -2,7 +2,7 @@
     <div class="header1 flex justify-between px-10 mx-w m-auto items-center">
         <div class="logo flex items-center">
             <a class="px-2 py-2 logo flex items-center" [routerLink]="['/']">
-                <img src="assets/images/goldPalaceLogo2.png" />
+                <img class="logoImg" src="assets/images/goldPalaceLogo2.png" />
             </a>
         </div>
         <app-search></app-search>
@@ -52,7 +52,7 @@
                 <li><a class="mr-3 p-2" [routerLink]="['/']">Home</a></li>
                 <li *ngFor="let metal of metalType" class="relative gold-silver">
                     <a class="mr-3 p-2" routerLink="/metalType/{{metal.name}}">{{metal.name | uppercase}}</a>
-                    <div class="absolute gold flex-wrap w-9/12 z-10 top-8 left-0 bg-white text-black shadow-xl" *ngIf="metal.name.includes('gold')">
+                    <div class="absolute gold border-2 border-red-700 flex-wrap w-9/12 z-10 top-8 left-0 bg-white text-black shadow-xl" *ngIf="metal.name.includes('gold')">
                         <a routerLink="/category/gold/earing">
                             <div  class="flex-col">
                                 <img src="assets/images/gold/simpleGoldEaring-1-d.jpg" alt="">
@@ -96,7 +96,7 @@
                             </div>
                         </a>
                     </div>
-                    <div class="absolute silver flex-wrap z-10 top-8 left-0 bg-white text-black shadow-xl" *ngIf="metal.name.includes('silver')">
+                    <div class="absolute silver border-2 border-red-700 flex-wrap z-10 top-8 left-0 bg-white text-black shadow-xl" *ngIf="metal.name.includes('silver')">
                         <a routerLink="/category/silver/earing">
                             <div  class="flex-col">
                                 <img src="assets/images/silver/silverEaring-1-d.jpg" alt="">
@@ -128,7 +128,7 @@
                             </div>
                         </a>
                     </div>
-                    <div class="absolute silver flex-wrap z-10 top-8 left-0 bg-white text-black shadow-xl" *ngIf="metal.name.includes('diamond')">
+                    <div class="absolute silver border-2 border-red-700 flex-wrap z-10 top-8 left-0 bg-white text-black shadow-xl" *ngIf="metal.name.includes('diamond')">
                         <a routerLink="/category/diamond/necklace">
                             <div  class="flex-col">
                                 <img src="assets/images/diamond/diamondNecklace-1-d.jpg" alt="">
@@ -160,7 +160,7 @@
                             </div>
                         </a>
                     </div>
-                    <div class="absolute silver flex-wrap z-10 top-8 left-0 bg-white text-black shadow-xl" *ngIf="metal.name.includes('coin')">
+                    <div class="absolute silver border-2 border-red-700 flex-wrap z-10 top-8 left-0 bg-white text-black shadow-xl" *ngIf="metal.name.includes('coin')">
                         <a routerLink="/category/coin/coin">
                             <div  class="flex-col">
                                 <img src="assets/images/coin/goldCoin-1-d.jpg" alt="">
@@ -189,7 +189,7 @@
                 </li>
                 <li class="gold-items relative">
                     <a class="mr-3 p-2" [routerLink]="['/category/All']">Categories</a>
-                    <div class="items absolute z-10 top-8 left-0 flex-col bg-white text-black shadow-xl">
+                    <div class="items border-2 border-red-700 absolute z-10 top-8 left-0 flex-col bg-white text-black shadow-xl">
                         <a *ngFor="let data of categories"
                             routerLink="/category/{{data.name}}">{{data.name | uppercase}} ({{data.count}})</a>
                     </div>

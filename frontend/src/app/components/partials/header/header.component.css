@@ -64,6 +64,8 @@ a:hover{
 .logo{
     width: 100px;
     height: 80px;
+    opacity: 1;
+    transform: translateY(0px);
 }
 .admin .user:hover .logout{
     display: block;

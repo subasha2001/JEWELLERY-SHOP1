@@ -24,7 +24,9 @@ export class HomePageComponent {
 
   products: jewelleryType[] = [];
   bannerImages:bannerType[] = [];
-  GR!:number;
+  GR22!:number;
+  GR18!:number;
+  GR24!:number;
   SR!:number;
   goldMC!:number;
   silverMC!:number;
@@ -49,16 +51,15 @@ export class HomePageComponent {
       })
 
       if(typeof localStorage!== 'undefined'){
-        const goldrate = localStorage.getItem('goldRate');
+        const goldrate22 = localStorage.getItem('goldRate22');
+        const goldrate24 = localStorage.getItem('goldRate24');
+        const goldrate18 = localStorage.getItem('goldRate18');
         const silverrate = localStorage.getItem('silverRate');
   
-        if(goldrate){
-          this.GR = JSON.parse(goldrate);
-        }
-
-        if(silverrate){
-          this.SR = JSON.parse(silverrate);
-        }
+        if(goldrate22){this.GR22 = JSON.parse(goldrate22);}
+        if(goldrate24){this.GR24 = JSON.parse(goldrate24);}
+        if(goldrate18){this.GR18 = JSON.parse(goldrate18);}
+        if(silverrate){this.SR = JSON.parse(silverrate);}
       }
     })
 
